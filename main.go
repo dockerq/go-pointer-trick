@@ -11,16 +11,13 @@ type R struct {
 func main() {
 	rr := GetR()
 	var rs []*R
-	fmt.Printf("rr type is %T\n", rr)
-	fmt.Println("rr is", rr)
-	fmt.Println("*rr is", *rr)
-	// fmt.Printf("*rs type is %T", *rs)
-	for k, r := range *rr {
-		fmt.Printf("%dth r, id: %d, cpu: %f, mem: %f\n", k, r.ID, r.CPU, r.MEM)
-		// fmt.Println("rs is ", rs)
-		// fmt.Println("r is ", r)
-		// rs = append(rs, &(*rr)[k])
-		rs = append(rs, &r)
+	for k, _ := range *rr {
+		// correct code
+		rs = append(rs, &(*rr)[k])
+		/*
+			error code
+			rs = append(rs, &r)
+		*/
 		fmt.Println(rs)
 	}
 	fmt.Println(rs)
